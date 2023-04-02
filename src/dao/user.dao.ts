@@ -10,12 +10,6 @@ export class UserDao {
     @InjectDataSource() private dataSource: DataSource,
     @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
-  async start() {
-    const queryRunner = this.dataSource.createQueryRunner();
-    await queryRunner.connect();
-    await queryRunner.startTransaction();
-    return queryRunner;
-  }
 
   async insert(
     name: string,

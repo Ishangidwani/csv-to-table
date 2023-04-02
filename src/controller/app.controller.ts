@@ -9,7 +9,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiBody, ApiConsumes } from '@nestjs/swagger';
 import { diskStorage } from 'multer';
 import { AppService } from './../services';
-import { UploadResponseDTO } from './../dto';
+import { AgeWiseDistributionDTO, UploadResponseDTO } from './../dto';
 
 @Controller()
 export class AppController {
@@ -39,7 +39,7 @@ export class AppController {
   uploadFile(
     @UploadedFile()
     file: Express.Multer.File,
-  ): Promise<UploadResponseDTO> {
+  ): Promise<any> {
     return this.appService.processFile(file.path);
   }
 
@@ -57,5 +57,4 @@ export class AppController {
   sample1() {
     return this.appService.sample1();
   }
-
 }
